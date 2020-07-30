@@ -8,6 +8,6 @@ const server = new ApolloServer({
     resolvers
 })
 
-server.listen().then(({ url }) => {
+server.listen(4001).then(({ url }) => {
     console.log(`Executando em ${url}`)
 })
