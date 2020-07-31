@@ -6,7 +6,7 @@ module.exports = {
   },
   async perfil(_, { filtro }) {
     const { id, nome } = filtro
-    if (id) return db('perfis').where({ id }).first()
-    return db('perfis').where('nome', 'like', nome).first()
+    const filter = id ? { id } : { nome }
+    return db('perfis').where(filter).first()
   }
 }

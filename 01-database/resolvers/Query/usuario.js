@@ -6,7 +6,7 @@ module.exports = {
   },
   async usuario(_, { filtro }) {
     const { id, email } = filtro
-    if (id) return db('usuarios').where({ id }).first()
-    return db('usuarios').where('email', 'like', email).first()
+    const filter = id ? { id } : { email }
+    return db('usuarios').where(filter).first()
   }
 }
