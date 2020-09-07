@@ -1,40 +1,40 @@
 type Usuario {
-    id: Int
-    nome: String!
-    email: String!
-    perfis: [Perfil]
+  id: Int
+  nome: String!
+  email: String!
+  perfis: [Perfil]
 }
 
 input UsuarioInput {
-    nome: String
-    email: String
-    senha: String
-    perfis: [PerfilFiltro]
+  nome: String
+  email: String
+  senha: String
+  perfis: [PerfilFiltro]
 }
 
 input UsuarioRegistarInput {
-    nome: String
-    email: String
-    senha: String
+  nome: String
+  email: String
+  senha: String
 }
 
 input UsuarioFiltro {
-    id: Int
-    email: String
+  id: Int
+  email: String
 }
 
 type Perfil {
-    id: Int
-    nome: String!
-    rotulo: String!
+  id: Int
+  nome: String!
+  rotulo: String!
 }
 
 input PerfilInput {
-    nome: String
-    rotulo: String
+  nome: String
+  rotulo: String
 }
 
 input PerfilFiltro {
-    id: Int
-    nome: String
+  id: Int
+  nome: String
 }
