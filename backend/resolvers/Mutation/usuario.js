@@ -8,7 +8,10 @@ const mutations = {
   async registrarUsuario (_, { dados }) {
     return mutations.novoUsuario(_, { dados })
   },
-  async novoUsuario (_, { dados: { perfis: filtroPerfis, ...dados } }) {
+
+  async novoUsuario (_, { dados: { perfis: filtroPerfis, ...dados } }, ctx) {
+    ctx && ctx.validarAdmin()
+
     const salt = bcrypt.genSaltSync()
     dados.senha = bcrypt.hashSync(dados.senha, salt)
 
@@ -35,7 +38,10 @@ const mutations = {
 
     return db('usuarios').where({ id }).first()
   },
-  async excluirUsuario (_, args) {
+
+  async excluirUsuario (_, args, ctx) {
+    ctx && ctx.validarAdmin()
+
     const usuario = await obterUsuario(_, args)
     if (!usuario) throw new Error('Usuário não encontrado.')
 
@@ -44,7 +50,10 @@ const mutations = {
 
     return usuario
   },
-  async alterarUsuario (_, { filtro, dados: { perfis: filtroPerfis, ...dados } }) {
+
+  async alterarUsuario (_, { filtro, dados: { perfis: filtroPerfis, ...dados } }, ctx) {
+    ctx && ctx.validarUsuarioFiltro(filtro)
+
     const usuario = await obterUsuario(_, { filtro })
     if (!usuario) throw new Error('Usuário não encontrado.')
 

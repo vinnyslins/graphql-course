@@ -11,7 +11,7 @@ const getUsuario = async perfilId => {
 }
 
 module.exports = async req => {
-  const usuario = await getUsuario(1)
+  const usuario = await getUsuario(2)
   if (usuario) {
     const { token } = await getUsuarioLogado(usuario)
     req.headers.authorization = `Bearer ${token}`
