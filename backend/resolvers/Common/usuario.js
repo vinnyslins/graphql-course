@@ -11,7 +11,7 @@ module.exports = {
       id: usuario.id,
       nome: usuario.nome,
       email: usuario.email,
-      perfis: perfis.map(perfil => perfil.nome),
+      perfis,
       iat: now,
       exp: now + (3 * 24 * 3600)
     }
