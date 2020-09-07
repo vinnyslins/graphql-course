@@ -57,7 +57,7 @@ const mutations = {
     const usuario = await obterUsuario(_, { filtro })
     if (!usuario) throw new Error('Usuário não encontrado.')
 
-    if (filtroPerfis) {
+    if (ctx.isAdmin && filtroPerfis) {
       await db('usuarios_perfis').where({ usuario_id: usuario.id }).delete()
 
       if (filtroPerfis.length) {

@@ -13,10 +13,14 @@ module.exports = {
 
     return getUsuarioLogado(usuario)
   },
-  async usuarios () {
+  async usuarios (parent, args, ctx) {
+    ctx && ctx.validarAdmin()
+
     return db('usuarios')
   },
-  async usuario (_, { filtro }) {
+  async usuario (_, { filtro }, ctx) {
+    ctx && ctx.validarUsuarioFiltro(filtro)
+
     const { id, email } = filtro
     const filter = id ? { id } : { email }
     return db('usuarios').where(filter).first()
