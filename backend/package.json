@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prestart": "knex migrate:latest",
     "start": "nodemon --ext js,graphql",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
