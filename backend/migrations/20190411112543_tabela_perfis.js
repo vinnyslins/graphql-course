@@ -9,8 +9,8 @@ exports.up = function (knex, Promise) {
       { nome: 'admin', rotulo: 'Administrador' }
     ])
   })
-};
+}
 
 exports.down = function (knex, Promise) {
   return knex.schema.dropTable('perfis')
-};
+}

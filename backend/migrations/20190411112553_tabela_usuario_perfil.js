@@ -6,8 +6,8 @@ exports.up = function (knex, Promise) {
     table.foreign('perfil_id').references('perfis.id')
     table.primary(['usuario_id', 'perfil_id'])
   })
-};
+}
 
 exports.down = function (knex, Promise) {
   return knex.schema.dropTable('usuarios_perfis')
-};
+}
